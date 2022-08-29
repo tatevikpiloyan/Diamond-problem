@@ -1,0 +1,38 @@
+#include <iostream>
+
+class Parent
+{
+public:
+    int basedata;
+
+public:
+    Parent() : basedata(0) {std::cout << "Parent ctor" << std::endl;}
+    ~Parent() {std::cout << "Parent dtor" << std::endl;}
+};
+
+class Child1: virtual public Parent
+{
+public:
+    Child1() {std::cout << "Child1 ctor" << std::endl;}
+    ~Child1() {std::cout << "Child1 dtor" << std::endl;}
+};
+
+class Child2: virtual public Parent
+{
+public:
+    Child2() {std::cout << "Child2 ctor" << std::endl;}
+    ~Child2() {std::cout << "Child2 dtor" << std::endl;}
+};
+
+class Grandchild: public Child1, public Child2
+{
+public:
+    Grandchild() {std::cout << "Grandchild ctor" << std::endl;}
+    ~Grandchild() {std::cout << "Grandchild dtor" << std::endl;}
+
+public:
+    int getData()
+    {
+        return basedata;
+    }
+};
